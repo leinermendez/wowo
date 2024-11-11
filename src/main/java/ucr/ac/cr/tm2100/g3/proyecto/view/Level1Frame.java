@@ -21,7 +21,7 @@ public class Level1Frame extends javax.swing.JFrame {
     public Level1Frame(JPanel nivel1) {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.add(nivel1);
+        this.add(nivel1,0);
 
         nivel1.setBounds(50, 50, 597, 597);
         this.requestFocus(true);

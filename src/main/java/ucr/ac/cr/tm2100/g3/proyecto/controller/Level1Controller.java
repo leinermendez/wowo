@@ -18,25 +18,23 @@ import ucr.ac.cr.tm2100.g3.proyecto.view.PanelNivel1;
 public class Level1Controller implements KeyListener {
 
     Level1Frame level1Frame;
-      PanelNivel1 nivel1;
-      Matriz1 matriz;
+    PanelNivel1 nivel1;
+    Matriz1 matriz;
     MenuFrame menuFrame;
-    private  int laberinto[][];
+    private int laberinto[][];
 
     public Level1Controller(MenuFrame menuFrameParam) {
-        
-       
-        matriz =  new Matriz1();
-        laberinto= matriz.obtenerLaberinto();
-        nivel1 = new PanelNivel1(597, 16);
-         level1Frame = new Level1Frame(nivel1);
-      level1Frame.addKeyListener(this);
-      level1Frame.setFocusable(true);
-      level1Frame.requestFocusInWindow();
+        matriz = new Matriz1();
+        laberinto = matriz.obtenerLaberinto();
+        nivel1 = new PanelNivel1(597, 16, matriz.obtenerLaberinto());
+        level1Frame = new Level1Frame(nivel1);
+
+        level1Frame.addKeyListener(this);
+        level1Frame.setFocusable(true);
+        level1Frame.requestFocusInWindow();
         level1Frame.setVisible(true);
         menuFrame = menuFrameParam;
-        
-        
+
     }
 
     public void setVisible() {
@@ -49,16 +47,16 @@ public class Level1Controller implements KeyListener {
         switch (e.getKeyCode()) {
 
             case KeyEvent.VK_W:  // ARRIBA
-               
+                System.out.println(e.getKeyChar());
                 break;
             case KeyEvent.VK_S:  // ABAJO
-               
+                System.out.println(e.getKeyChar());
                 break;
             case KeyEvent.VK_A:  // IZQUIERDA
-             
+                System.out.println(e.getKeyChar());
                 break;
             case KeyEvent.VK_D:  // DERECHA
-                
+                System.out.println(e.getKeyChar());
                 break;
             default:
                 break;
@@ -68,12 +66,10 @@ public class Level1Controller implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

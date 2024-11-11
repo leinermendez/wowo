@@ -18,15 +18,15 @@ import ucr.ac.cr.tm2100.g3.proyecto.model.Matriz1;
 public class PanelNivel1 extends javax.swing.JPanel  {
 
     Matriz1 level1 = new Matriz1();
-    private int[][] laberinto = level1.obtenerLaberinto();
+    private int[][] laberinto;
     private int tammax, tam, can, res;
 
-    public PanelNivel1(int tammax, int can) {
+    public PanelNivel1(int tammax, int can, int[][] matriz) {
         this.tammax = tammax;
         this.can = can;
         this.tam = tammax / can;
         this.res = tammax % can;
-        
+        laberinto = matriz;
         initComponents();
     }
 

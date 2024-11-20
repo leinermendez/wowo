@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Dimension; 
 import java.awt.event.KeyListener;
 import javax.swing.JPanel;
+import ucr.ac.cr.tm2100.g3.proyecto.model.Personaje;
 
 /**
  *
@@ -16,9 +17,10 @@ import javax.swing.JPanel;
 public class Level1Frame extends javax.swing.JFrame {
 
     PanelNivel1 nivel1;
+    Personaje pj;
     int xClick, yClick;
 
-    public Level1Frame(JPanel nivel1) {
+    public Level1Frame(JPanel nivel1, Personaje pj) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.add(nivel1,0);
@@ -45,7 +47,6 @@ public class Level1Frame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 51, 0));
-        setUndecorated(true);
         setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));

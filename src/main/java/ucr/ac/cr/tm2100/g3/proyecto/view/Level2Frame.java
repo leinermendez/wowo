@@ -4,7 +4,6 @@
  */
 package ucr.ac.cr.tm2100.g3.proyecto.view;
 
-import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import ucr.ac.cr.tm2100.g3.proyecto.model.Personaje;
 

@@ -4,10 +4,9 @@
  */
 package ucr.ac.cr.tm2100.g3.proyecto.controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import javax.swing.JOptionPane;
 import ucr.ac.cr.tm2100.g3.proyecto.model.Matriz3;
 import ucr.ac.cr.tm2100.g3.proyecto.model.Personaje;
 import ucr.ac.cr.tm2100.g3.proyecto.view.Level3Frame;
@@ -20,50 +19,104 @@ import ucr.ac.cr.tm2100.g3.proyecto.view.PanelNivel3;
  */
 public class Level3Controller implements KeyListener {
 
-    Level3Frame level3Frame;
-    PanelNivel3 nivel3;
-    MenuFrame menuFrame;
+    Level3Frame level3Frame; // Ventana que contiene el nivel 1
+    PanelNivel3 nivel3; // Panel que representa visualmente el nivel 1
     Matriz3 matriz; // Objeto que representa la matriz del laberinto
+    MenuFrame menuFrame; // Ventana principal del menú del juego
     Personaje pj; // Objeto que representa al personaje controlado por el jugador
-
+    
     private int laberinto[][]; // Matriz que define la estructura del laberinto
 
     public Level3Controller(MenuFrame menuFrameParam) {
 
-        menuFrame = menuFrameParam;
-
         matriz = new Matriz3(); // Inicializa la matriz del laberinto
         laberinto = matriz.obtenerLaberinto(); // Obtiene la matriz del laberinto
-
-        nivel3 = new PanelNivel3(597, 16); // Configura el panel visual del nivel
+        nivel3 = new PanelNivel3(597, 16, matriz.obtenerLaberinto()); // Configura el panel visual del nivel
 
         pj = new Personaje(0, 2); // Crea el personaje en una posición inicial (0,2)
-        level3Frame = new Level3Frame(nivel3, pj);
-        level3Frame.setVisible(true);
+        level3Frame = new Level3Frame(nivel3, pj); // Crea la ventana del nivel 1 y le pasa el panel y el personaje
+
         level3Frame.addKeyListener(this); // Agrega el controlador como escuchador de eventos de teclado
         level3Frame.setFocusable(true); // Hace que el frame pueda recibir eventos de teclado
         level3Frame.requestFocusInWindow(); // Solicita el foco en el frame para eventos de teclado
-        level3Frame.setVisible(true); // Hace visible la ventana del nivel 2
+        level3Frame.setVisible(true); // Hace visible la ventana del nivel 1
         menuFrame = menuFrameParam; // Asigna el menú principal pasado como parámetro
-
     }
 
+    // Método para establecer un nuevo panel para el nivel 1
+    public void setPanel(PanelNivel3 nivel3) {
+        this.nivel3 = nivel3;
+    }
+
+// Método para hacer visible la ventana del nivel 1
     public void setVisible() {
         level3Frame.setVisible(true);
     }
-
+    
     @Override
     public void keyTyped(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        int dx = 0; // Cambio en la posición horizontal
+        int dy = 0; // Cambio en la posición vertical
+
+        switch (e.getKeyCode()) {
+
+            case KeyEvent.VK_W:  // ARRIBA
+                System.out.println(e.getKeyChar());
+                dy = -1;
+                break;
+
+            case KeyEvent.VK_S:  // ABAJO
+                System.out.println(e.getKeyChar());
+                dy = 1;
+                break;
+
+            case KeyEvent.VK_A:  // IZQUIERDA
+                System.out.println(e.getKeyChar());
+                dx = -1;
+                break;
+
+            case KeyEvent.VK_D:  // DERECHA
+                System.out.println(e.getKeyChar());
+                dx = 1;
+                break;
+
+        }
+
+        // Calcula la nueva posición del personaje
+        int nuevoX = pj.getX() + dx;
+        int nuevoY = pj.getY() + dy;
+
+// Verifica si la nueva posición es válida y no es unpunto de teletransporte
+        if (matriz.esCeldaLibre(nuevoX, nuevoY) || matriz.esMeta(nuevoX, nuevoY) || matriz.esFake(nuevoX, nuevoY) || matriz.esTrampaEnemiga(nuevoX, nuevoY) || !matriz.esInvisible(nuevoX, nuevoY)) {
+
+            pj.mover(dx, dy);// Actualiza la posición del personaje
+            System.out.println("Nueva posición: (" + pj.getX() + ", " + pj.getY() + ")");
+
+            // Actualiza la posición del personaje en el panel y repinta
+            nivel3.actualizarPosicionPersonaje(pj.getX(), pj.getY());
+
+            if (matriz.esMeta(nuevoX, nuevoY)) {
+                 JOptionPane.showMessageDialog(null, "Nivel completado!");
+                menuFrame.setVisible(true);
+                level3Frame.dispose();
+            }
+
+        }
+
+        
+
+    
+
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+      
     }
 }

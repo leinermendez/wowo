@@ -4,8 +4,6 @@
  */
 package ucr.ac.cr.tm2100.g3.proyecto.view;
 
-import java.awt.Color;
-import java.awt.Dimension; 
 import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 import ucr.ac.cr.tm2100.g3.proyecto.model.Personaje;
@@ -18,7 +16,6 @@ public class Level1Frame extends javax.swing.JFrame {
 
     PanelNivel1 nivel1;
     Personaje pj;
-    int xClick, yClick;
 
     public Level1Frame(JPanel nivel1, Personaje pj) {
         initComponents();

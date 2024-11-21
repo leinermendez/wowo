@@ -42,7 +42,7 @@ public class Level2Controller implements KeyListener {
         level2Frame.setVisible(true); // Hace visible la ventana del nivel 2
         menuFrame = menuFrameParam; // Asigna el menú principal pasado como parámetro
     }
-    // Método para establecer un nuevo panel para el nivel 1
+    // Método para establecer un nuevo panel para el nivel 2
 
     public void setPanel(PanelNivel2 nivel2) {
         this.nivel2 = nivel2;

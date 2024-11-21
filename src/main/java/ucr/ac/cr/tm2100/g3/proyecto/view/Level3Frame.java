@@ -13,16 +13,16 @@ import ucr.ac.cr.tm2100.g3.proyecto.model.Personaje;
  */
 public class Level3Frame extends javax.swing.JFrame {
     PanelNivel3 nivel3;
-   int xClick, yClick;
    Personaje pj;
    
     public Level3Frame(JPanel nivel3, Personaje pj) {
         initComponents();
-        nivel3 = new PanelNivel3(670, 15);
+            this.setLocationRelativeTo(null);
         this.add(nivel3, 0);
-        nivel3.setBounds(0, 0, 670, 670);
-        this.setLocationRelativeTo(this);
+        nivel3.setBounds(0, 0, 680, 680);
+    
         this.requestFocus(true);
+        
     }
   
     

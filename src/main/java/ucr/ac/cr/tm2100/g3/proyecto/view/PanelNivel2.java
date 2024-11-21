@@ -7,7 +7,6 @@ package ucr.ac.cr.tm2100.g3.proyecto.view;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import ucr.ac.cr.tm2100.g3.proyecto.model.Matriz1;
 import ucr.ac.cr.tm2100.g3.proyecto.model.Matriz2;
 import ucr.ac.cr.tm2100.g3.proyecto.model.Personaje;
 

@@ -5,6 +5,8 @@
 package ucr.ac.cr.tm2100.g3.proyecto.view;
 
 import java.awt.event.ActionListener;
+import javax.swing.JPanel;
+import ucr.ac.cr.tm2100.g3.proyecto.model.Personaje;
 
 /**
  *
@@ -13,22 +15,18 @@ import java.awt.event.ActionListener;
 public class Level2Frame extends javax.swing.JFrame {
 
     PanelNivel2 nivel2;
+    Personaje pj;
     int xClick, yClick;
 
-    public Level2Frame() {
+    public Level2Frame(JPanel nivel2, Personaje pj) {
         initComponents();
-        setLocationRelativeTo(null);
-        nivel2 = new PanelNivel2(597, 16);
-        this.add(nivel2, 0);
-        nivel2.setBounds(50, 50, 597, 597);
+        this.setLocationRelativeTo(null);
+        this.add(nivel2,0);
 
+        nivel2.setBounds(50, 50, 597, 597);
         this.requestFocus(true);
     }
-
-    public void listen(ActionListener controller) {
-       // btnRegresar.addActionListener(controller);
-
-    }
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,7 +55,6 @@ public class Level2Frame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(700, 700));
         setResizable(false);
 
@@ -95,37 +92,6 @@ public class Level2Frame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Level2Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Level2Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Level2Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Level2Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Level2Frame().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;

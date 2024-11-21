@@ -6,6 +6,7 @@ package ucr.ac.cr.tm2100.g3.proyecto.controller;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import javax.swing.JOptionPane;
 import ucr.ac.cr.tm2100.g3.proyecto.model.Matriz2;
 import ucr.ac.cr.tm2100.g3.proyecto.model.Personaje;
 import ucr.ac.cr.tm2100.g3.proyecto.view.Level2Frame;
@@ -100,6 +101,7 @@ public class Level2Controller implements KeyListener {
             nivel2.actualizarPosicionPersonaje(pj.getX(), pj.getY());
 
             if (matriz.esMeta(nuevoX, nuevoY)) {
+                 JOptionPane.showMessageDialog(null, "Nivel completado!");
                 menuFrame.setVisible(true);
                 level2Frame.dispose();
             }

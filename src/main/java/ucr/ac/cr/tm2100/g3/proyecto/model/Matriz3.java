@@ -9,10 +9,10 @@ package ucr.ac.cr.tm2100.g3.proyecto.model;
  * @author RYZEN
  */
 public class Matriz3 {
-        public int[][] obtenerLaberinto() {
-          //    0= camino 1= pared 3=trampa veneno 4= trampa enemiga 5= agujero 6= caja
+     
+          //    0= camino 1= pared 3=trampa veneno 4= trampa enemiga 5= agujero 6= caja 8=meta
      int[][] laberinto3 = {
-    {0, 0, 0, 7, 0, 4, 0, 0, 7, 0, 0, 6, 0, 4, 0},
+    {0, 0, 0, 7, 0, 4, 0, 0, 7, 0, 0, 6, 0, 4, 8},
     {0, 1, 0, 1, 0, 1, 0, 1, 5, 1, 0, 1, 3, 1, 0},
     {0, 0, 0, 2, 6, 2, 0, 0, 0, 4, 0, 7, 0, 2, 0},
     {5, 1, 3, 1, 0, 1, 5, 1, 0, 1, 2, 1, 0, 1, 0},
@@ -29,7 +29,21 @@ public class Matriz3 {
     {0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 };
         
-
+   public int[][] obtenerLaberinto() {
         return laberinto3;
     }
+   
+    public boolean esCeldaLibre(int x, int y) {// Verifica si la celda está libre
+        return laberinto3[y][x] == 0;
+    }
+   
+    public boolean esMeta(int x, int y) {
+        if (laberinto3[y][x] == 8) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+    
 }

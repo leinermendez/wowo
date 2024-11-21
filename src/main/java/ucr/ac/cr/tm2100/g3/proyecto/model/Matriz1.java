@@ -60,9 +60,7 @@ public class Matriz1 {
     public boolean esMeta(int x, int y) {
 
         if (laberinto1[y][x] == 4) {
-            JOptionPane.showMessageDialog(null, "Nivel completado!");
             return true;
-            
         } else {
             return false;
         }

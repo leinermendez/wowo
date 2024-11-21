@@ -105,7 +105,7 @@ public class Level1Controller implements KeyListener {
             nivel1.actualizarPosicionPersonaje(pj.getX(), pj.getY());
             
             if ( matriz.esMeta(nuevoX, nuevoY)){
-              
+               JOptionPane.showMessageDialog(null, "Nivel completado!");
                 menuFrame.setVisible(true);
                 level1Frame.dispose();
                   

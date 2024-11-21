@@ -4,7 +4,8 @@
  */
 package ucr.ac.cr.tm2100.g3.proyecto.view;
 
-import java.awt.event.ActionListener;
+import javax.swing.JPanel;
+import ucr.ac.cr.tm2100.g3.proyecto.model.Personaje;
 
 /**
  *
@@ -13,20 +14,18 @@ import java.awt.event.ActionListener;
 public class Level3Frame extends javax.swing.JFrame {
     PanelNivel3 nivel3;
    int xClick, yClick;
+   Personaje pj;
    
-    public Level3Frame() {
+    public Level3Frame(JPanel nivel3, Personaje pj) {
         initComponents();
         nivel3 = new PanelNivel3(670, 15);
         this.add(nivel3, 0);
         nivel3.setBounds(0, 0, 670, 670);
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(this);
         this.requestFocus(true);
     }
   
-    public void listen(ActionListener controller) {
-//        btnRegresar.addActionListener(controller);
-        
-    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,10 +38,9 @@ public class Level3Frame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(670, 670));
-        setMinimumSize(new java.awt.Dimension(670, 670));
-        setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(670, 670));
+        setMaximumSize(new java.awt.Dimension(685, 708));
+        setMinimumSize(new java.awt.Dimension(685, 708));
+        setPreferredSize(new java.awt.Dimension(685, 708));
         setResizable(false);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(690, 690));
@@ -79,37 +77,7 @@ public class Level3Frame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Level3Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Level3Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Level3Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Level3Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Level3Frame().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;

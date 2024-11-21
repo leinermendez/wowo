@@ -11,7 +11,8 @@ package ucr.ac.cr.tm2100.g3.proyecto.model;
 public class Matriz3 {
 
     //    visibles 0= camino  4= trampa enemiga
-   //     invisibles 1= pared(directamente no se pinta) 2= bloqueo  3=trampa veneno 5= agujero 8=meta
+   //     invisibles 1= pared(directamente no se pinta) 2= bloqueo  3=trampa veneno 8=meta
+    // cada hoyo es diferente pues solo se debe pintar el que se pinte
     //9= personaje
     
     int laberinto3[][]
@@ -19,8 +20,8 @@ public class Matriz3 {
                 {0, 0, 0, 7, 0, 4, 0, 0, 7, 0, 0, 0, 0, 4, 8},
                 {0, 1, 0, 1, 0, 1, 0, 1, 5, 1, 0, 1, 3, 1, 0},
                 {0, 0, 0, 2, 0, 2, 0, 0, 0, 4, 0, 7, 0, 2, 0},
-                {5, 1, 3, 1, 0, 1, 5, 1, 0, 1, 2, 1, 0, 1, 0},
-                {0, 7, 0, 5, 0, 4, 0, 3, 0, 2, 0, 4, 0, 4, 0},
+                {0, 1, 3, 1, 0, 1, 5, 1, 0, 1, 2, 1, 0, 1, 0},
+                {5, 7, 0, 5, 0, 4, 0, 3, 0, 2, 0, 4, 0, 4, 0},
                 {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
                 {0, 5, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0, 2, 0},
                 {0, 1, 0, 1, 5, 1, 0, 1, 0, 1, 2, 1, 0, 1, 0},
@@ -38,7 +39,13 @@ public class Matriz3 {
     }
 
     public boolean esCeldaLibre(int x, int y) {// Verifica si la celda está libre
-        return laberinto3[y][x] == 0;
+        if (laberinto3[y][x] == 0){
+        return true;
+        }else if( laberinto3[y][x] == 1){
+              System.out.println("pared!");//confirma que el metodo se ejecuto
+        return false;
+        }
+         return false;
     }
 
     public boolean esPoisonTrap(int x, int y) {
@@ -72,6 +79,14 @@ public class Matriz3 {
             return true;
     }
     
+    
+    public boolean esHoyo(int x, int y) {
+        if (laberinto3[y][x] == 5 || laberinto3[y][x] == 25) {
+            System.out.println("Hoyo!");//confirma que el metodo se ejecuto
+            return true;
+        }
+        return false;
+    }
     
     
     public boolean esMeta(int x, int y) {

@@ -24,7 +24,7 @@ public class Level3Controller implements KeyListener {
     Matriz3 matriz; // Objeto que representa la matriz del laberinto
     MenuFrame menuFrame; // Ventana principal del menú del juego
     Personaje pj; // Objeto que representa al personaje controlado por el jugador
-    
+
     private int laberinto[][]; // Matriz que define la estructura del laberinto
 
     public Level3Controller(MenuFrame menuFrameParam) {
@@ -52,7 +52,7 @@ public class Level3Controller implements KeyListener {
     public void setVisible() {
         level3Frame.setVisible(true);
     }
-    
+
     @Override
     public void keyTyped(KeyEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -60,7 +60,7 @@ public class Level3Controller implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        
+
         int dx = 0; // Cambio en la posición horizontal
         int dy = 0; // Cambio en la posición vertical
 
@@ -92,31 +92,47 @@ public class Level3Controller implements KeyListener {
         int nuevoX = pj.getX() + dx;
         int nuevoY = pj.getY() + dy;
 
-// Verifica si la nueva posición es válida y no es unpunto de teletransporte
-        if (matriz.esCeldaLibre(nuevoX, nuevoY) || matriz.esMeta(nuevoX, nuevoY) || matriz.esFake(nuevoX, nuevoY) || matriz.esTrampaEnemiga(nuevoX, nuevoY) || !matriz.esInvisible(nuevoX, nuevoY)) {
+        //-------------------------------------------------------------------------------------------- CONDICIONALES DE MOVIMIENTO
+//Verifica si el personaje  esta en el camino, si choca con una pared o llego a la meta
+        if (matriz.esCeldaLibre(nuevoX, nuevoY) || matriz.esMeta(nuevoX, nuevoY) || matriz.esFake(nuevoX, nuevoY)
+                || !matriz.esInvisible(nuevoX, nuevoY) ||  matriz.esPoisonTrap(nuevoX, nuevoY) ||  matriz.esTrampaEnemiga(nuevoX, nuevoY)) {
 
-            pj.mover(dx, dy);// Actualiza la posición del personaje
-            System.out.println("Nueva posición: (" + pj.getX() + ", " + pj.getY() + ")");
-
-            // Actualiza la posición del personaje en el panel y repinta
-            nivel3.actualizarPosicionPersonaje(pj.getX(), pj.getY());
+            if (matriz.esCeldaLibre(nuevoX, nuevoY) || matriz.esMeta(nuevoX, nuevoY) || matriz.esFake(nuevoX, nuevoY)) {
+                pj.mover(dx, dy);// Actualiza la posición del personaje
+                System.out.println("Nueva posición: (" + pj.getX() + ", " + pj.getY() + ")");
+                // Actualiza la posición del personaje en el panel y repinta
+                nivel3.actualizarPosicionPersonaje(pj.getX(), pj.getY());
+            }
 
             if (matriz.esMeta(nuevoX, nuevoY)) {
-                 JOptionPane.showMessageDialog(null, "Nivel completado!");
+                JOptionPane.showMessageDialog(null, "Nivel completado!");
                 menuFrame.setVisible(true);
                 level3Frame.dispose();
             }
 
         }
+        
+        //EL PERSONAJE SE MUEVE AL INICIO
+// Verifica si la nueva posición es un punto de teletransporte
+        if (matriz.esHoyo(nuevoX, nuevoY)) {
+            
+            pj.mover(dx, dy);// Actualiza la posición del personaje
+            // Actualiza la posición del personaje en el panel y repinta
+            nivel3.moverPersonaje(pj);
+        }
 
         
 
     
+//                || matriz.esTrampaEnemiga(nuevoX, nuevoY) || !matriz.esInvisible(nuevoX, nuevoY) 
+//                || !matriz.esPoisonTrap(nuevoX, nuevoY)
+//ES UN BLOQUEO
+//ES UNA TRAMPA
+//ES ENEMIGO
+}
 
-    }
+@Override
+public void keyReleased(KeyEvent e) {
 
-    @Override
-    public void keyReleased(KeyEvent e) {
-      
     }
 }

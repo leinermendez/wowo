@@ -26,7 +26,7 @@ public class Matriz2 {
                 /*fila 6*/ {1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1},
                 /*fila 7*/ {1, 0, 0, 0, 0, 1, 0, 1, 6, 0, 1, 0, 0, 0, 0, 1},
                 /*fila 8*/ {1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1},
-                /*fila 9*/ {1, 0, 0, 1, 4, 0, 0, 1, 1,/* 2*/ 0, 1, 0, 1, 1, 0, 1},
+                /*fila 9*/ {1, 0, 0, 1, 4, 0, 0, 1, 1, 2, 1, 0, 1, 1, 0, 1},
                 /*fila 10*/ {1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0},
                 /*fila 11*/ {1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1},
                 /*fila 12*/ {1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0},
@@ -44,7 +44,7 @@ public class Matriz2 {
     }
 
     public boolean esLlave(int x, int y) { // Verifica si la celda es la llave 
-        if (laberinto2[x][y] == 3) {
+        if (laberinto2[y][x] == 3) {
             open = true;
             System.out.println("OPEN");
             return true;

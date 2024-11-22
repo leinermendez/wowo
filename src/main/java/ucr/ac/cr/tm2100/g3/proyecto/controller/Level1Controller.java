@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -18,12 +18,13 @@ import ucr.ac.cr.tm2100.g3.proyecto.view.PanelNivel1;
  * @author RYZEN
  */
 public class Level1Controller implements KeyListener {
-
+LevelWonController levelWonController;
     Level1Frame level1Frame; // Ventana que contiene el nivel 1
     PanelNivel1 nivel1; // Panel que representa visualmente el nivel 1
     Matriz1 matriz; // Objeto que representa la matriz del laberinto
     MenuFrame menuFrame; // Ventana principal del menú del juego
     Personaje pj; // Objeto que representa al personaje controlado por el jugador
+ 
     
     private int laberinto[][]; // Matriz que define la estructura del laberinto
 
@@ -93,9 +94,12 @@ public class Level1Controller implements KeyListener {
 // Verifica si la nueva posición es válida
         if (matriz.esCeldaLibre(nuevoX, nuevoY) || matriz.esLlave(nuevoX, nuevoY) || matriz.esCajon(nuevoX, nuevoY) || matriz.esMeta(nuevoX, nuevoY) ) {
             
-             if ( matriz.esMeta(nuevoX, nuevoY)){
-                menuFrame.setVisible(true);
+             
+            if ( matriz.esMeta(nuevoX, nuevoY)){
                 level1Frame.dispose();
+               levelWonController = new LevelWonController(menuFrame);
+              
+                  
             }
              
             pj.mover(dx, dy);// Actualiza la posición del personaje
@@ -104,12 +108,6 @@ public class Level1Controller implements KeyListener {
             // Actualiza la posición del personaje en el panel y repinta
             nivel1.actualizarPosicionPersonaje(pj.getX(), pj.getY());
             
-            if ( matriz.esMeta(nuevoX, nuevoY)){
-               JOptionPane.showMessageDialog(null, "Nivel completado!");
-                menuFrame.setVisible(true);
-                level1Frame.dispose();
-                  
-            }
         }
         
         

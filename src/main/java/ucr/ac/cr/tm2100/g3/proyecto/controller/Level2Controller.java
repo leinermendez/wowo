@@ -24,6 +24,7 @@ public class Level2Controller implements KeyListener {
     MenuFrame menuFrame;
     Matriz2 matriz; // Objeto que representa la matriz del laberinto
     Personaje pj; // Objeto que representa al personaje controlado por el jugador
+    LevelWonController levelWonController;
 
     private int laberinto[][]; // Matriz que define la estructura del laberinto
 
@@ -100,10 +101,11 @@ public class Level2Controller implements KeyListener {
             // Actualiza la posición del personaje en el panel y repinta
             nivel2.actualizarPosicionPersonaje(pj.getX(), pj.getY());
 
-            if (matriz.esMeta(nuevoX, nuevoY)) {
-                 JOptionPane.showMessageDialog(null, "Nivel completado!");
-                menuFrame.setVisible(true);
-                level2Frame.dispose();
+            if ( matriz.esMeta(nuevoX, nuevoY)){
+                 
+               levelWonController = new LevelWonController(menuFrame);
+             
+                  level2Frame.dispose();
             }
 
         }

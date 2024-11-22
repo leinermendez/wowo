@@ -12,20 +12,19 @@ import ucr.ac.cr.tm2100.g3.proyecto.model.Personaje;
  * @author RYZEN
  */
 public class Level3Frame extends javax.swing.JFrame {
+
     PanelNivel3 nivel3;
-   Personaje pj;
-   
+    Personaje pj;
+
     public Level3Frame(JPanel nivel3, Personaje pj) {
         initComponents();
-            this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
         this.add(nivel3, 0);
-        nivel3.setBounds(0, 0, 680, 680);
-    
-        this.requestFocus(true);
         
+        nivel3.setBounds(0, 0, 690, 690);
+        this.requestFocus(true);
     }
-  
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,24 +37,23 @@ public class Level3Frame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(685, 708));
-        setMinimumSize(new java.awt.Dimension(685, 708));
-        setPreferredSize(new java.awt.Dimension(685, 708));
+        setMaximumSize(new java.awt.Dimension(700, 700));
+        setMinimumSize(new java.awt.Dimension(700, 700));
         setResizable(false);
 
-        jPanel1.setMaximumSize(new java.awt.Dimension(690, 690));
-        jPanel1.setMinimumSize(new java.awt.Dimension(690, 690));
-        jPanel1.setPreferredSize(new java.awt.Dimension(690, 690));
+        jPanel1.setMaximumSize(new java.awt.Dimension(700, 700));
+        jPanel1.setMinimumSize(new java.awt.Dimension(700, 700));
+        jPanel1.setPreferredSize(new java.awt.Dimension(700, 700));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGap(0, 700, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGap(0, 700, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -77,7 +75,6 @@ public class Level3Frame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;

@@ -10,12 +10,20 @@ package ucr.ac.cr.tm2100.g3.proyecto.model;
  */
 public class Personaje {
     private int x, y;
-    private int vidas = 5;
+    private int vidas;
 
     public Personaje(int startX, int startY) {
         this.x = startX;
         this.y = startY;
     }
+
+    public Personaje(int startX, int startY, int startVidas) {
+        this.x = startX;
+        this.y = startY;
+        this.vidas= startVidas;
+    }
+    
+    
     
    public void mover(int dx, int dy) {
         x += dx;
@@ -38,7 +46,13 @@ public class Personaje {
         this.y = y;
     }
     
+    public void restarVidas(int vidas){
+    this.vidas =vidas-1;
+    }
     
+    public int getVidasRestantes(){
+    return vidas;
+    }
     
     
     

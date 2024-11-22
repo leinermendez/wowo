@@ -34,10 +34,13 @@ public class PanelNivel3 extends javax.swing.JPanel {
     public void paint(Graphics g) {
 
         Image pj = new ImageIcon("./src/main/resources/img/spriteStand.png").getImage();
+        Image poisoned = new ImageIcon("./src/main/resources/img/spritePoisoned.png").getImage();
+
         Image camino3 = new ImageIcon("./src/main/resources/img/camino3.png").getImage();
 
         Image poisonTrap = new ImageIcon("./src/main/resources/img/poisonTrap.png").getImage();
         Image trampaEnemigo = new ImageIcon("./src/main/resources/img/trampaEnemigo.png").getImage();
+        Image trapperAwake = new ImageIcon("./src/main/resources/img/trapperAwake.png").getImage();
         Image hoyo = new ImageIcon("./src/main/resources/img/hoyo.png").getImage();
         Image box = new ImageIcon("./src/main/resources/img/box.png").getImage();
         Image bloqueoInvisible = new ImageIcon("./src/main/resources/img/bloqueo.png").getImage();
@@ -50,7 +53,7 @@ public class PanelNivel3 extends javax.swing.JPanel {
         for (int i = 0; i < can; i++) {
             for (int j = 0; j < can; j++) {
 
-                if (laberinto[i][j] == 7 || laberinto[i][j] == 9) {
+                if (laberinto[i][j] == 7 || laberinto[i][j] == 9 || laberinto[i][j] == 3 || laberinto[i][j] == 23) {
                     g.drawImage(camino3, res / 2 + j * tam, res / 2 + i * tam, null);
                 }
 
@@ -72,12 +75,15 @@ public class PanelNivel3 extends javax.swing.JPanel {
                         img = bloqueoInvisible;
 
                     case 3 -> //trampas de veneno
-                        img = camino3;
-                    case 23 ->
                         img = poisonTrap;
+                    case 23 ->
+                        img = poisoned;
 
                     case 4 -> //trampa enemigo
                         img = trampaEnemigo;
+                        
+                    case 24 -> //trampa enemigo
+                        img = trapperAwake;
 
                     case 5 -> //trampas de agujero
                         img = camino3;
@@ -89,12 +95,13 @@ public class PanelNivel3 extends javax.swing.JPanel {
 
                     case 7 ->
                         img = planta;
-                        
+
                     case 8 ->
                         img = camino3;
 
                     case 9 ->
                         img = pj;
+                 
                 }
 
                 if (img != null) {
@@ -120,25 +127,18 @@ public class PanelNivel3 extends javax.swing.JPanel {
         repaint();
     }
 
-    public void cambiarMatriz(int x, int y) {
-        laberinto[x][y] = 0;
-    }
 
-    public void moverPersonaje(Personaje pj) {
+    public void moverPersonajeTP(Personaje pj) {
         // Variables actuales del personaje
         int x = pj.getX();
         int y = pj.getY();
-        int xHole;
-        int yHole;
 
         // Determinar el movimiento basado en la posición actual
         switch (laberinto[y][x]) {
-            case 5: // Nenúfar 1 al Nenúfar 2
-                laberinto[pj.getY()][pj.getX()] = 25;
+            case 5: // hoyo
+                laberinto[pj.getY()][pj.getX()] = 25; //convierte la casilla a visible
                 x = 0;
                 y = 2;
-                xHole = 4;
-                yHole = 9;
                 // Actualizar posición del personaje
                 pj.setX(x);
                 pj.setY(y);
@@ -156,11 +156,9 @@ public class PanelNivel3 extends javax.swing.JPanel {
                 break;
 
             case 25:
-                laberinto[pj.getY()][pj.getX()] = 25;
+
                 x = 0;
                 y = 2;
-                xHole = 4;
-                yHole = 9;
                 // Actualizar posición del personaje
                 pj.setX(x);
                 pj.setY(y);
@@ -176,6 +174,86 @@ public class PanelNivel3 extends javax.swing.JPanel {
                 // Actualizar visualización
                 repaint();
         }
+    }
+
+    public void restarVida(Personaje pj) {
+        
+        // Variables actuales del personaje
+        int x = pj.getX();
+        int y = pj.getY();
+        int vidas = pj.getVidasRestantes();
+        
+         switch (laberinto[y][x]) {
+            case 3: // trampa
+                laberinto[pj.getY()][pj.getX()] = 23; //convierte la casilla a visible
+                x = 0;
+                y = 2;
+                // Actualizar posición del personaje
+                pj.setX(x);
+                pj.setY(y);
+                pj.restarVidas(vidas);
+                System.out.println("vidas restantes: " +vidas);
+                // Limpiar posición anterior
+                for (int i = 0; i < can; i++) {
+                    for (int j = 0; j < can; j++) {
+                        if (laberinto[i][j] == 9) {
+                            laberinto[i][j] = 0; // Regresar a camino
+                        }
+                    }
+                }
+                laberinto[2][0] = 9; //muestra la nueva posicion
+                // Actualizar visualización
+                repaint();
+                break;
+
+            case 23:
+
+                x = 0;
+                y = 2;
+                // Actualizar posición del personaje
+                pj.setX(x);
+                pj.setY(y);
+                pj.restarVidas(vidas);
+                System.out.println("vidas restantes: " +vidas);
+                // Limpiar posición anterior
+                for (int i = 0; i < can; i++) {
+                    for (int j = 0; j < can; j++) {
+                        if (laberinto[i][j] == 9) {
+                            laberinto[i][j] = 0; // Regresar a camino
+                        }
+                    }
+                }
+                
+                laberinto[y][x] = 9; //muestra la nueva posicion
+                // Actualizar visualización
+                repaint();
+    }
+    }
+    
+    
+    public void trapperAwake(int x, int y, Personaje pj) {
+
+                 // Limpiar posición anterior
+        for (int i = 0; i < can; i++) {
+            for (int j = 0; j < can; j++) {
+                if (laberinto[i][j] == 9) {
+                    laberinto[i][j] = 0; // Regresar a camino
+                }
+            }
+        }
+        // Actualizar la nueva posición
+        laberinto[y][x] = 24;
+               
+                repaint();
+        }
+    
+    public boolean conVida(Personaje pj){
+    if(pj.getVidasRestantes()==0){
+        System.out.println("NO QUEDAN VIDAS");
+    return false;
+    }else{
+    return true;
+    }
     }
 
     @SuppressWarnings("unchecked")

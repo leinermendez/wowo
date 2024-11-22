@@ -10,13 +10,14 @@ import java.awt.event.ActionListener;
  *
  * @author RYZEN
  */
-public class LevelWonFrame extends javax.swing.JFrame {
+public class SinVidasFrame extends javax.swing.JFrame {
 
+    
     int xClick, yClick;
     
     
     
-    public LevelWonFrame() {
+    public SinVidasFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -24,7 +25,6 @@ public class LevelWonFrame extends javax.swing.JFrame {
     public void listen(ActionListener controller){
     btnRegresar.addActionListener(controller);
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,11 +41,10 @@ public class LevelWonFrame extends javax.swing.JFrame {
         arrastre = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/btnVolver.png"))); // NOI18N
+        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/btnVolver2.png"))); // NOI18N
         btnRegresar.setActionCommand("REGRESAR");
         btnRegresar.setBorder(null);
         btnRegresar.setBorderPainted(false);
@@ -55,9 +54,9 @@ public class LevelWonFrame extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 550, -1, -1));
+        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 580, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/levelWonFrame.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sinVidasFrame.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         arrastre.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -98,6 +97,10 @@ public class LevelWonFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
     private void arrastreMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_arrastreMouseDragged
         this.setLocation(evt.getXOnScreen() - xClick, evt.getYOnScreen() - yClick);
     }//GEN-LAST:event_arrastreMouseDragged
@@ -106,10 +109,6 @@ public class LevelWonFrame extends javax.swing.JFrame {
         xClick = evt.getX();
         yClick = evt.getY();
     }//GEN-LAST:event_arrastreMousePressed
-
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,20 +127,20 @@ public class LevelWonFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LevelWonFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SinVidasFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LevelWonFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SinVidasFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LevelWonFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SinVidasFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LevelWonFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SinVidasFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LevelWonFrame().setVisible(true);
+                new SinVidasFrame().setVisible(true);
             }
         });
     }

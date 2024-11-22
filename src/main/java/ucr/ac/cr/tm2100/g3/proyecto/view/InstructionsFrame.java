@@ -54,7 +54,7 @@ public class InstructionsFrame extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, 170, 120));
+        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 630, 170, 120));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/instruccionesFrame.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

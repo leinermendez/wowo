@@ -12,20 +12,19 @@ public class Matriz3 {
 
     //    visibles 0= camino  4= trampa enemiga
    //     invisibles 1= pared(directamente no se pinta) 2= bloqueo  3=trampa veneno 8=meta
-    // cada hoyo es diferente pues solo se debe pintar el que se pinte
     //9= personaje
     
     int laberinto3[][]
             = {
-                {0, 0, 0, 7, 0, 4, 0, 0, 7, 0, 0, 0, 0, 4, 8},
+                {0 , 0, 0, 7, 0, 4, 0, 0, 7, 0, 0, 0, 0, 4, 8},
                 {0, 1, 0, 1, 0, 1, 0, 1, 5, 1, 0, 1, 3, 1, 0},
-                {0, 0, 0, 2, 0, 2, 0, 0, 0, 4, 0, 7, 0, 2, 0},
+                {0, 0, 0, 2, 0, 2, 0, 0, 0, 4, 0, 2, 0, 0, 0},
                 {0, 1, 3, 1, 0, 1, 5, 1, 0, 1, 2, 1, 0, 1, 0},
                 {5, 7, 0, 5, 0, 4, 0, 3, 0, 2, 0, 4, 0, 4, 0},
                 {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-                {0, 5, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0, 2, 0},
-                {0, 1, 0, 1, 5, 1, 0, 1, 0, 1, 2, 1, 0, 1, 0},
-                {0, 2, 0, 4, 0, 0, 0, 5, 0, 4, 0, 0, 0, 2, 0},
+                {0, 0, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0, 2, 0},
+                {0, 1, 0, 1, 5, 1, 0, 1, 0, 1, 2, 1, 0, 1, 2},
+                {0, 2, 0, 4, 0, 0, 0, 5, 0, 4, 0, 0, 0, 0, 0},
                 {0, 1, 2, 1, 0, 1, 1, 1, 5, 1, 0, 1, 5, 1, 0},
                 {0, 7, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0},
                 {0, 1, 5, 7, 2, 1, 2, 1, 0, 1, 0, 1, 0, 1, 5},
@@ -35,7 +34,9 @@ public class Matriz3 {
             };
 
     public int[][] obtenerLaberinto() {
+        
         return laberinto3;
+        
     }
 
     public boolean esCeldaLibre(int x, int y) {// Verifica si la celda está libre
@@ -65,6 +66,7 @@ public class Matriz3 {
     }
       public boolean esTrampaEnemiga(int x, int y) {
         if (laberinto3[y][x] == 4 ) {
+            
             System.out.println("TRAP!");//confirma que el metodo se ejecuto
             return true;
         }

@@ -6,7 +6,10 @@ package ucr.ac.cr.tm2100.g3.proyecto.view;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import ucr.ac.cr.tm2100.g3.proyecto.model.Matriz3;
 import ucr.ac.cr.tm2100.g3.proyecto.model.Personaje;
 
@@ -20,6 +23,7 @@ public class PanelNivel3 extends javax.swing.JPanel {
     private int[][] laberinto = level3.obtenerLaberinto();
     private int tammax, tam, can, res;
     private Personaje pj;
+    private JButton btnCuidado;
 
     public PanelNivel3(int tammax, int can, int[][] matriz) {
         this.tammax = tammax;
@@ -28,6 +32,7 @@ public class PanelNivel3 extends javax.swing.JPanel {
         this.tam = tammax / this.can;
         this.res = tammax % this.can;
         initComponents();
+
     }
 
     @Override
@@ -35,9 +40,7 @@ public class PanelNivel3 extends javax.swing.JPanel {
 
         Image pj = new ImageIcon("./src/main/resources/img/spriteStand.png").getImage();
         Image poisoned = new ImageIcon("./src/main/resources/img/spritePoisoned.png").getImage();
-
         Image camino3 = new ImageIcon("./src/main/resources/img/camino3.png").getImage();
-
         Image poisonTrap = new ImageIcon("./src/main/resources/img/poisonTrap.png").getImage();
         Image trampaEnemigo = new ImageIcon("./src/main/resources/img/trampaEnemigo.png").getImage();
         Image trapperAwake = new ImageIcon("./src/main/resources/img/trapperAwake.png").getImage();
@@ -81,7 +84,7 @@ public class PanelNivel3 extends javax.swing.JPanel {
 
                     case 4 -> //trampa enemigo
                         img = trampaEnemigo;
-                        
+
                     case 24 -> //trampa enemigo
                         img = trapperAwake;
 
@@ -101,7 +104,7 @@ public class PanelNivel3 extends javax.swing.JPanel {
 
                     case 9 ->
                         img = pj;
-                 
+
                 }
 
                 if (img != null) {
@@ -126,7 +129,6 @@ public class PanelNivel3 extends javax.swing.JPanel {
         laberinto[y][x] = 9;
         repaint();
     }
-
 
     public void moverPersonajeTP(Personaje pj) {
         // Variables actuales del personaje
@@ -177,13 +179,13 @@ public class PanelNivel3 extends javax.swing.JPanel {
     }
 
     public void restarVida(Personaje pj) {
-        
+
         // Variables actuales del personaje
         int x = pj.getX();
         int y = pj.getY();
         int vidas = pj.getVidasRestantes();
-        
-         switch (laberinto[y][x]) {
+
+        switch (laberinto[y][x]) {
             case 3: // trampa
                 laberinto[pj.getY()][pj.getX()] = 23; //convierte la casilla a visible
                 x = 0;
@@ -192,7 +194,7 @@ public class PanelNivel3 extends javax.swing.JPanel {
                 pj.setX(x);
                 pj.setY(y);
                 pj.restarVidas(vidas);
-                System.out.println("vidas restantes: " +vidas);
+                System.out.println("vidas restantes: " + vidas);
                 // Limpiar posición anterior
                 for (int i = 0; i < can; i++) {
                     for (int j = 0; j < can; j++) {
@@ -203,6 +205,7 @@ public class PanelNivel3 extends javax.swing.JPanel {
                 }
                 laberinto[2][0] = 9; //muestra la nueva posicion
                 // Actualizar visualización
+
                 repaint();
                 break;
 
@@ -214,7 +217,7 @@ public class PanelNivel3 extends javax.swing.JPanel {
                 pj.setX(x);
                 pj.setY(y);
                 pj.restarVidas(vidas);
-                System.out.println("vidas restantes: " +vidas);
+                System.out.println("vidas restantes: " + vidas);
                 // Limpiar posición anterior
                 for (int i = 0; i < can; i++) {
                     for (int j = 0; j < can; j++) {
@@ -223,17 +226,16 @@ public class PanelNivel3 extends javax.swing.JPanel {
                         }
                     }
                 }
-                
+
                 laberinto[y][x] = 9; //muestra la nueva posicion
                 // Actualizar visualización
                 repaint();
+        }
     }
-    }
-    
-    
+
     public void trapperAwake(int x, int y, Personaje pj) {
 
-                 // Limpiar posición anterior
+        // Limpiar posición anterior
         for (int i = 0; i < can; i++) {
             for (int j = 0; j < can; j++) {
                 if (laberinto[i][j] == 9) {
@@ -243,17 +245,17 @@ public class PanelNivel3 extends javax.swing.JPanel {
         }
         // Actualizar la nueva posición
         laberinto[y][x] = 24;
-               
-                repaint();
-        }
-    
-    public boolean conVida(Personaje pj){
-    if(pj.getVidasRestantes()==0){
-        System.out.println("NO QUEDAN VIDAS");
-    return false;
-    }else{
-    return true;
+
+        repaint();
     }
+
+    public boolean conVida(Personaje pj) {
+        if (pj.getVidasRestantes() == 0) {
+            System.out.println("NO QUEDAN VIDAS");
+            return false;
+        } else {
+            return true;
+        }
     }
 
     @SuppressWarnings("unchecked")

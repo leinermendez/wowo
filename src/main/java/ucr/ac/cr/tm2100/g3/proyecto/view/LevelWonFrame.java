@@ -23,6 +23,7 @@ public class LevelWonFrame extends javax.swing.JFrame {
     
     public void listen(ActionListener controller){
     btnRegresar.addActionListener(controller);
+    btnSiguienteNivel.addActionListener(controller);
     }
 
 
@@ -37,6 +38,7 @@ public class LevelWonFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnRegresar = new javax.swing.JButton();
+        btnSiguienteNivel = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         arrastre = new javax.swing.JPanel();
 
@@ -55,7 +57,19 @@ public class LevelWonFrame extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 550, -1, -1));
+        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 560, -1, -1));
+
+        btnSiguienteNivel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/btnSiguienteNivel.png"))); // NOI18N
+        btnSiguienteNivel.setActionCommand("SIGUIENTE NIVEL");
+        btnSiguienteNivel.setBorder(null);
+        btnSiguienteNivel.setBorderPainted(false);
+        btnSiguienteNivel.setContentAreaFilled(false);
+        btnSiguienteNivel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteNivelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSiguienteNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 480, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/levelWonFrame.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -111,6 +125,10 @@ public class LevelWonFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegresarActionPerformed
 
+    private void btnSiguienteNivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteNivelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSiguienteNivelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -149,6 +167,7 @@ public class LevelWonFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel arrastre;
     public javax.swing.JButton btnRegresar;
+    public javax.swing.JButton btnSiguienteNivel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

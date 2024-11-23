@@ -6,7 +6,7 @@ package ucr.ac.cr.tm2100.g3.proyecto.controller;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javax.swing.JOptionPane;
+
 import ucr.ac.cr.tm2100.g3.proyecto.model.Matriz2;
 import ucr.ac.cr.tm2100.g3.proyecto.model.Personaje;
 import ucr.ac.cr.tm2100.g3.proyecto.view.Level2Frame;
@@ -94,43 +94,40 @@ public class Level2Controller implements KeyListener {
 
 // Verifica si la nueva posición es válida y no es unpunto de teletransporte
         if (matriz.esCeldaLibre(nuevoX, nuevoY) || matriz.esLlave(nuevoX, nuevoY) || matriz.esCajon(nuevoX, nuevoY) || matriz.esMeta(nuevoX, nuevoY)) {
-
             pj.mover(dx, dy);// Actualiza la posición del personaje
             System.out.println("Nueva posición: (" + pj.getX() + ", " + pj.getY() + ")");
-
             // Actualiza la posición del personaje en el panel y repinta
             nivel2.actualizarPosicionPersonaje(pj.getX(), pj.getY());
 
-            if ( matriz.esMeta(nuevoX, nuevoY)){
-                 
-               levelWonController = new LevelWonController(menuFrame);
-             
-                  level2Frame.dispose();
+            if (matriz.esMeta(nuevoX, nuevoY)) {
+                level2Frame.dispose(); // Cierra la ventana del nivel actual
+
+                // Crea el controlador del nivel ganado, indicando el nivel actual
+                LevelWonController levelWonController = new LevelWonController(menuFrame, 2);
             }
 
         }
 
-        
 // Verifica si la nueva posición es un punto de teletransporte
         if (matriz.esNenufar1(nuevoX, nuevoY)) {
-            
+
             pj.mover(dx, dy);// Actualiza la posición del personaje
             // Actualiza la posición del personaje en el panel y repinta
-            nivel2.moverPersonaje(pj);  
-        } 
-        
+            nivel2.moverPersonaje(pj);
+        }
+
         if (matriz.esNenufar2(nuevoX, nuevoY)) {
-            
+
             pj.mover(dx, dy);// Actualiza la posición del personaje
             // Actualiza la posición del personaje en el panel y repinta
-            nivel2.moverPersonaje(pj);  
+            nivel2.moverPersonaje(pj);
 
         }
 
     }
 
-@Override
-public void keyReleased(KeyEvent e) {
+    @Override
+    public void keyReleased(KeyEvent e) {
 
     }
 }
